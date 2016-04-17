@@ -141,8 +141,10 @@
             style="@style/list_card.thumbnail"
             android:layout_marginTop = "5dp"
             android:clickable="true"
+
             android:foreground="?android:attr/selectableItemBackground"
             />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         total = db.totalCount();
 
 
+
         ArrayList<Card> cards = new ArrayList<Card>();
         Calendar cal = Calendar.getInstance();
         int currentyear = cal.get(Calendar.YEAR);
@@ -152,13 +153,13 @@ public class MainActivity extends AppCompatActivity {
                 card.setOnClickListener(new Card.OnCardClickListener() {
                                             @Override
                                             public void onClick(Card card, View view) {
-                                                String x = card.getId();
                                                 Intent intent = new Intent(getApplicationContext(), VaccineList.class);
-                                               String id = card.getId();
-
-                                                intent.putExtra("name", header.getTitle());
-
-
+                                                String id = card.getId();
+                                                content = db.getBaby(Integer.parseInt(id));
+                                                Bundle extras = new Bundle();
+                                                extras.putString("name", header.getTitle());
+                                                extras.putString("Date",content.getdateofbirth());
+                                                intent.putExtras(extras);
                                                 startActivity(intent);
 
                                             }
