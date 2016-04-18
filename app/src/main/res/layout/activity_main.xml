@@ -31,6 +31,7 @@
         <Button
             android:layout_width="56dp"
             android:layout_height="50dp"
+
             android:layout_gravity="right"
             android:id="@+id/button"
             android:shape="rectangle"
@@ -91,6 +92,7 @@
             android:textSize="14sp"/>
 
         <Button
+            android:id="@+id/profilebutton"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -104,12 +106,13 @@
             android:drawablePadding="0sp"
             />
         <Button
+            android:id="@+id/sharebutton"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text = "Share"
             android:background="@null"
-            android:textColor="@color/bottombuttoncolor"
+            android:textColor="@drawable/sharebuttoncolor"
             android:drawableTop="@android:drawable/ic_menu_share"
             android:textSize="14sp"
             android:onClick="shareButton"

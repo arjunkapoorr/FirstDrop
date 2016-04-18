@@ -6,6 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -230,6 +235,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+        if(TotalCards>0){
+            Button profileButton = (Button) findViewById(R.id.profilebutton);
+            profileButton.setTextColor(Color.parseColor("#ffffff"));
+            profileButton.setBackgroundColor(Color.parseColor("#1f1a1a"));
+
+
+
+
+
+
+        }
 
 
     }
@@ -237,6 +253,9 @@ public class MainActivity extends AppCompatActivity {
     public void addBaby(View view) {
 
         Intent i = new Intent(this, addBaby.class);
+        Button btn = (Button) findViewById(R.id.button);
+        btn.setBackgroundResource(R.drawable.addbabybutton);
+
         startActivity(i);
 
 
@@ -249,6 +268,9 @@ public class MainActivity extends AppCompatActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
+        Button shareButton = (Button) findViewById(R.id.sharebutton);
+
+
 
 
     }
