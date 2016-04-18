@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     int Width;
     int Height;
     int TotalCards;
+    static boolean active = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -235,10 +236,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        if(TotalCards>0){
+        if(TotalCards>0 && active == false){
             Button profileButton = (Button) findViewById(R.id.profilebutton);
             profileButton.setTextColor(Color.parseColor("#ffffff"));
             profileButton.setBackgroundColor(Color.parseColor("#1f1a1a"));
+
+
+
+
 
 
 
@@ -260,7 +265,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void settingsButton(View view) {
+        Intent i = new Intent(this, settings.class);
 
+
+
+        startActivity(i);
+
+
+
+
+
+    }
+    public void newsButton(View view) {
+        Intent i = new Intent(this, news.class);
+        startActivity(i);
+
+    }
     public void shareButton(View view) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
@@ -268,11 +289,25 @@ public class MainActivity extends AppCompatActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
-        Button shareButton = (Button) findViewById(R.id.sharebutton);
 
 
 
 
+
+    }
+    public void onStart() {
+        super.onStart();
+        active = true;
+    }
+    public void onStop() {
+        super.onStop();
+        active = false;
+    }
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }

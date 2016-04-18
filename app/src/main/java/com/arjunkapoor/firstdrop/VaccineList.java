@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
@@ -70,9 +71,9 @@ public class VaccineList extends AppCompatActivity {
             yearvaccine.add(date.get(Calendar.YEAR));
             int x = (date.get(Calendar.MONTH))+1;
             switch(x){
-                case 1:monthofvaccine = "January";
+                case 1:monthofvaccine = "Jan";
                     break;
-                case 2:monthofvaccine = "February";
+                case 2:monthofvaccine = "Feb";
                     break;
                 case 3:monthofvaccine = "March";
                     break;
@@ -84,15 +85,15 @@ public class VaccineList extends AppCompatActivity {
                     break;
                 case 7:monthofvaccine = "July";
                     break;
-                case 8:monthofvaccine = "August";
+                case 8:monthofvaccine = "Aug";
                     break;
-                case 9:monthofvaccine = "September";
+                case 9:monthofvaccine = "Sep";
                     break;
-                case 10:monthofvaccine = "October";
+                case 10:monthofvaccine = "Oct";
                     break;
-                case 11:monthofvaccine = "November";
+                case 11:monthofvaccine = "Nov";
                     break;
-                case 12:monthofvaccine = "December";
+                case 12:monthofvaccine = "Dec";
                     break;
             }
             monthvaccine.add(x);
@@ -240,6 +241,8 @@ TextView y;
 
         Intent i = new Intent(this, addBaby.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Button btn = (Button) findViewById(R.id.addbaby_vaccinelist);
+        btn.setBackgroundResource(R.drawable.addbabybuttonvaccinelist);
         startActivity(i);
 
 

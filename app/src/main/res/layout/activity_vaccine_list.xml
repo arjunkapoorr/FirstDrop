@@ -79,7 +79,8 @@
                             android:background="@drawable/ic_action_user"
                             android:onClick="addBaby"
                             android:shape="rectangle"
-                            android:textColor="#FFF" />
+                            android:textColor="#FFF"
+                            />
                     </LinearLayout>
                 </LinearLayout>
 

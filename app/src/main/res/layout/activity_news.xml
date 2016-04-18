@@ -5,67 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".news"
     >
 
 
 
 
-       <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 
 
 
-    >
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:background="#2196F3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top|bottom"
-        android:theme="@style/ToolBarStyle"
-        app:titleTextAppearance="@style/mainactivitytoolbartext">
-        <Button
-            android:layout_width="56dp"
-            android:layout_height="50dp"
-            android:layout_gravity="right"
-            android:id="@+id/button"
-            android:shape="rectangle"
-            android:background = "@drawable/ic_action_usermain"
-            android:textColor="#FFF"
-            android:onClick="addBaby" />
-    </android.support.v7.widget.Toolbar>
+        >
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarnews"
+            android:minHeight="?attr/actionBarSize"
+            android:background="#2196F3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|bottom"
+            android:theme="@style/ToolBarStyle"
+            app:titleTextAppearance="@style/mainactivitytoolbartext">
+
+        </android.support.v7.widget.Toolbar>
 
 
-</LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/cardlinearlayoutparent"
         >
-    <LinearLayout
-        android:id="@+id/cardlinearlayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        <LinearLayout
+            android:id="@+id/cardlinearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/reclylerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
 
-    <it.gmariotti.cardslib.library.view.CardListView
-        android:id="@+id/myList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
-        card:list_card_layout_resourceID="@layout/list_card_thumbnail_layout"
-        style="@style/list_card.thumbnail"
-        android:layout_marginTop = "5dp"
-        android:clickable="true"
-
-        android:foreground="?android:attr/selectableItemBackground"
-        />
-</LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -77,22 +64,22 @@
         >
 
         <Button
-            android:id="@+id/new_button"
+            android:id="@+id/new_buttonnews"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text = "News"
             android:background="@null"
-            android:textColor="@drawable/sharebuttoncolor"
+            android:textColor="@color/bottombuttoncolor"
             android:drawableTop="@android:drawable/ic_menu_sort_by_size"
             android:gravity="bottom|center"
             android:paddingBottom="7sp"
             android:drawablePadding="0sp"
             android:textSize="14sp"
-            android:onClick="newsButton"/>
+            />
 
         <Button
-            android:id="@+id/profilebutton"
+            android:id="@+id/profilebuttonnews"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -104,9 +91,10 @@
             android:gravity="bottom|center"
             android:paddingBottom="7sp"
             android:drawablePadding="0sp"
+            android:onClick="profilebuttonnews"
             />
         <Button
-            android:id="@+id/sharebutton"
+            android:id="@+id/sharebuttonnews"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -115,14 +103,14 @@
             android:textColor="@drawable/sharebuttoncolor"
             android:drawableTop="@android:drawable/ic_menu_share"
             android:textSize="14sp"
-            android:onClick="shareButton"
+            android:onClick="sharebuttonnews"
 
             android:gravity="bottom|center"
             android:paddingBottom="7sp"
             android:drawablePadding="0sp"/>
         <Button
             android:layout_weight="1"
-            android:id="@+id/settingsbutton"
+            android:id="@+id/settingsbuttonnews"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text = "Settings"
@@ -130,7 +118,7 @@
             android:textColor="@drawable/sharebuttoncolor"
             android:drawableTop="@android:drawable/ic_menu_manage"
             android:textSize="14sp"
-            android:onClick="settingsButton"
+            android:onClick="settingsbuttonnews"
 
             android:gravity="bottom|center"
             android:paddingBottom="7sp"
@@ -151,3 +139,4 @@
 
 
 </LinearLayout>
+
