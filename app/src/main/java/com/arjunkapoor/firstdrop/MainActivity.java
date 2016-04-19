@@ -28,6 +28,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.firebase.client.Firebase;
+
 import org.joda.time.LocalDate;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     int Height;
     int TotalCards;
     static boolean active = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

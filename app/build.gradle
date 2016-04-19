@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
 }
     repositories {
     mavenCentral()
@@ -31,6 +36,7 @@ dependencies {
     compile 'com.bignerdranch.android:expandablerecyclerview:1.0.3'
     compile 'com.github.gabrielemariotti.cards:cardslib-cards:2.1.0'
     compile 'joda-time:joda-time:2.9.2'
+    compile 'com.firebase:firebase-client-android:2.5.2+'
 
 
 }

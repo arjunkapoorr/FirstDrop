@@ -81,7 +81,7 @@ public class addBaby extends AppCompatActivity {
                 babydobdata, babygendertextdata));
 
 
-        Toast.makeText(this, "total count is " + db.totalCount(), Toast.LENGTH_SHORT).show();
+        
         Intent i = new Intent(this, MainActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
