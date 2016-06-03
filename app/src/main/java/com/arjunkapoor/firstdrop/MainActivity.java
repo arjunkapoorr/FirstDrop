@@ -28,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.firebase.client.Firebase;
+
 
 import org.joda.time.LocalDate;
 import org.joda.time.Period;

@@ -5,6 +5,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,13 +24,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+
 
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.List;
 
 import it.gmariotti.cardslib.library.cards.actions.BaseSupplementalAction;
 import it.gmariotti.cardslib.library.cards.actions.TextSupplementalAction;
@@ -45,9 +48,11 @@ public class news extends AppCompatActivity {
     TextView mText55  ;
     TextView mText6  ;
     TextView mText66  ;
-    Firebase mRef;
+
     static boolean active = false;
     LinearLayout LayoutOnNullCount;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
 
     @Override
@@ -62,8 +67,13 @@ public class news extends AppCompatActivity {
             Button newsButton = (Button) findViewById(R.id.new_buttonnews);
             newsButton.setTextColor(Color.parseColor("#ffffff"));
             newsButton.setBackgroundColor(Color.parseColor("#1f1a1a"));
+            viewPager = (ViewPager) findViewById(R.id.viewpager);
+            setupViewPager(viewPager);
 
-if(isNetworkAvailable() == false){
+            tabLayout = (TabLayout) findViewById(R.id.tabs);
+            tabLayout.setupWithViewPager(viewPager);
+
+/*if(isNetworkAvailable() == false){
     LinearLayout layoutexisting = (LinearLayout) findViewById(R.id.cardlinearlayoutnews);
     layoutexisting.setVisibility(LinearLayout.GONE);
     LayoutOnNullCount = new LinearLayout(this);
@@ -81,15 +91,48 @@ if(isNetworkAvailable() == false){
     LinearLayout layoutparent = (LinearLayout) findViewById(R.id.cardlinearlayoutparentnews);
     layoutparent.addView(LayoutOnNullCount);
 Toast.makeText(this,"No connection detected",Toast.LENGTH_SHORT).show();
-
+*/
 
 
 }
     }
 
-
-Firebase.setAndroidContext(this);
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new newsfragment(), "NEWS");
+        adapter.addFragment(new knowledgefragment(), "KNOWLEDGE");
+        viewPager.setAdapter(adapter);
     }
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+
+
     public void profilebuttonnews(View view) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
@@ -107,7 +150,7 @@ Firebase.setAndroidContext(this);
         Intent i = new Intent(this, settings.class);
         startActivity(i);
     }
-    public void onStart() {
+    /*public void onStart() {
         super.onStart();
         active = true;
         mText1 = (TextView) findViewById(R.id.text1);
@@ -289,7 +332,7 @@ Firebase.setAndroidContext(this);
 
             }
         });
-    }
+    }*/
     public void onStop() {
         super.onStop();
         active = false;

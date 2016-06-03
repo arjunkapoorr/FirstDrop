@@ -200,6 +200,10 @@ for(i = 0;i<29;i++) {
     View child = getLayoutInflater().inflate(R.layout.xxx, null);
     CardViewNative cardView = (CardViewNative) child.findViewById(R.id.list_cardId);
     cardView.setCard(card);
+    View childcheck = getLayoutInflater().inflate(R.layout.carddemo_example_inner_content, null);
+    CheckBox check = (CheckBox) childcheck.findViewById(R.id.checkbox);
+
+
 
     cards.add(card);
 
@@ -221,9 +225,8 @@ for(i = 0;i<29;i++) {
 
 
 }
-TextView y;
-    public void setupInnerViewElements(ViewGroup parent, View view) {
-        View child = getLayoutInflater().inflate(R.layout.carddemo_example_inner_content, null);
+
+       public void setupInnerViewElements(ViewGroup parent, View view) {
 
 
     }
