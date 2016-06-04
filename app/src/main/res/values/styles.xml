@@ -4,6 +4,7 @@
    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="android:windowNoTitle">true</item>
     <item name="windowActionBar">false</item>
+
 </style>
     <style name="ToolBarStyle" parent="Theme.AppCompat">
         <item name="android:textColorPrimary">@android:color/white</item>
@@ -32,7 +33,11 @@
 
 
 
-
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#FFCC00</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:background">#37a0f4</item>
+    </style>
 
 
 

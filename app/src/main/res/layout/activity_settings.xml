@@ -50,7 +50,22 @@
         android:orientation = "vertical"
 
         >
-   // write here
+        <ListView
+
+
+            android:id="@+id/listsettings"
+            android:layout_width="match_parent"
+
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true"
+            android:choiceMode="singleChoice"
+
+            android:background="#ffffff"
+            android:layout_height="match_parent"
+            />
 
 
 
