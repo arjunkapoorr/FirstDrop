@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -52,42 +53,42 @@ public class addBaby extends AppCompatActivity {
         month_x = calendar.get(Calendar.MONTH);
         day_x = calendar.get(Calendar.DAY_OF_MONTH);
         showDialogOnEditClick();
+        Button doneButton = (Button) findViewById(R.id.done);
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                babynametext = (EditText) findViewById(R.id.babyname);
+                babydob = (EditText) findViewById(R.id.dateofbirth);
+                babygendertext = (EditText) findViewById(R.id.gender);
+                String babynametextdata = babynametext.getText().toString();
+                String babydobdata = babydob.getText().toString();
 
+                String babygendertextdata = babygendertext.getText().toString();
+                databaseHelper db = new databaseHelper(getApplication(), null, null, 1);
+                if (babynametext.getText().toString().trim().length() == 0) {
+                    Toast.makeText(getApplication(), "Please enter baby name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (babydob.getText().toString().trim().length() == 0) {
+                    Toast.makeText(getApplication(), "Please enter Date of Birth", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (babygendertext.getText().toString().trim().length() == 0) {
+                    Toast.makeText(getApplication(), "Please enter Gender", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                db.addBaby(new babyDatabaseManager(babynametextdata,
+                        babydobdata, babygendertextdata));
+
+
+
+                Intent i = new Intent(addBaby.this, MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
     }
-
-    public void doneButton(View view) {
-        babynametext = (EditText) findViewById(R.id.babyname);
-        babydob = (EditText) findViewById(R.id.dateofbirth);
-        babygendertext = (EditText) findViewById(R.id.gender);
-        String babynametextdata = babynametext.getText().toString();
-        String babydobdata = babydob.getText().toString();
-
-        String babygendertextdata = babygendertext.getText().toString();
-        databaseHelper db = new databaseHelper(this, null, null, 1);
-        if (babynametext.getText().toString().trim().length() == 0) {
-            Toast.makeText(this, "Please enter baby name", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (babydob.getText().toString().trim().length() == 0) {
-            Toast.makeText(this, "Please enter Date of Birth", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (babygendertext.getText().toString().trim().length() == 0) {
-            Toast.makeText(this, "Please enter Gender", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        db.addBaby(new babyDatabaseManager(babynametextdata,
-                babydobdata, babygendertextdata));
-
-
-
-        Intent i = new Intent(this, MainActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
-
-    }
-
 
     AlertDialog.Builder alert;
 

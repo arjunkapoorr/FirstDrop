@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_weight="1"
+        android:id = "@+id/hello"
 
 
 
@@ -24,13 +25,15 @@
         <android.support.design.widget.CoordinatorLayout
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/ToolBarStyle"
-                android:background="#2196F3">
+                android:background="#2196F3"
+                >
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbarnews"
                     android:minHeight="?attr/actionBarSize"
@@ -50,7 +53,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:tabMode="fixed"
-                    app:tabGravity="fill"/>
+                    app:tabGravity="fill"
+                    />
             </android.support.design.widget.AppBarLayout>
 
             <android.support.v4.view.ViewPager

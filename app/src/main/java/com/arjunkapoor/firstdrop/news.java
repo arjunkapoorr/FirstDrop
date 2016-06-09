@@ -36,20 +36,9 @@ import it.gmariotti.cardslib.library.cards.material.MaterialLargeImageCard;
 import it.gmariotti.cardslib.library.internal.Card;
 
 public class news extends AppCompatActivity {
-    TextView mText1 ;
-    TextView mText11;
-    TextView mText2  ;
-    TextView mText22  ;
-    TextView mText3  ;
-    TextView mText33  ;
-    TextView mText4  ;
-    TextView mText44 ;
-    TextView mText5  ;
-    TextView mText55  ;
-    TextView mText6  ;
-    TextView mText66  ;
 
-    static boolean active = false;
+
+
     LinearLayout LayoutOnNullCount;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -63,7 +52,7 @@ public class news extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setTitle("News");
-        if(active == false){
+
             Button newsButton = (Button) findViewById(R.id.new_buttonnews);
             newsButton.setTextColor(Color.parseColor("#ffffff"));
             newsButton.setBackgroundColor(Color.parseColor("#1f1a1a"));
@@ -72,9 +61,17 @@ public class news extends AppCompatActivity {
 
             tabLayout = (TabLayout) findViewById(R.id.tabs);
             tabLayout.setupWithViewPager(viewPager);
+            Intent i = getIntent();
+            int tabvalue = i.getIntExtra("tab value", -1);
+
+            if(tabvalue != -1) {
+                viewPager.setCurrentItem(tabvalue);
+
+            }
+
 
 /*if(isNetworkAvailable() == false){
-    LinearLayout layoutexisting = (LinearLayout) findViewById(R.id.cardlinearlayoutnews);
+    LinearLayout layoutexisting = (LinearLayout) findViewById(R.id.hello);
     layoutexisting.setVisibility(LinearLayout.GONE);
     LayoutOnNullCount = new LinearLayout(this);
     LayoutOnNullCount.setBackgroundColor(Color.parseColor("#F2F2F2"));
@@ -88,14 +85,15 @@ public class news extends AppCompatActivity {
 
 
     LayoutOnNullCount.addView(Text);
-    LinearLayout layoutparent = (LinearLayout) findViewById(R.id.cardlinearlayoutparentnews);
+    LinearLayout layoutparent = (LinearLayout) findViewById(R.id.hello);
     layoutparent.addView(LayoutOnNullCount);
 Toast.makeText(this,"No connection detected",Toast.LENGTH_SHORT).show();
-*/
 
 
+
+}*/
 }
-    }
+
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -150,193 +148,7 @@ Toast.makeText(this,"No connection detected",Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this, settings.class);
         startActivity(i);
     }
-    /*public void onStart() {
-        super.onStart();
-        active = true;
-        mText1 = (TextView) findViewById(R.id.text1);
-         mText11  =(TextView) findViewById(R.id.text11);
-         mText2  =(TextView) findViewById(R.id.text2);
-         mText22  =(TextView) findViewById(R.id.text22);
-         mText3  =(TextView) findViewById(R.id.text3);
-         mText33  =(TextView) findViewById(R.id.text33);
-         mText4  =(TextView) findViewById(R.id.text4);
-         mText44  =(TextView) findViewById(R.id.text44);
-         mText5  =(TextView) findViewById(R.id.text5);
-         mText55  =(TextView) findViewById(R.id.text55);
-         mText6  =(TextView) findViewById(R.id.text6);
-         mText66  =(TextView) findViewById(R.id.text66);
 
-
-
-
-
-
-
-
-
-
-
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Over");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText1.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Overdetail");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText11.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Intra");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText2.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Intradet");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText22.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Fort");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText3.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Fortdet");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText33.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Rota");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText4.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Rotadet");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText44.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/The");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText5.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Thedet");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText55.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Vacc");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText6.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        mRef=new Firebase("http://sizzling-torch-6549.firebaseio.com/Vaccdet");
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text=dataSnapshot.getValue(String.class);
-                mText66.setText(text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-    }*/
-    public void onStop() {
-        super.onStop();
-        active = false;
-    }
     public void onBackPressed() {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);

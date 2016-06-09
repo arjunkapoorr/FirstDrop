@@ -122,6 +122,11 @@ if(position == 3){
 
 
                 }
+                if(position == 0){
+                    Intent i = new Intent(settings.this,news.class);
+                    i.putExtra("tab value",1);
+                    startActivity(i);
+                }
 
             }
         });
